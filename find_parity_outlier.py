@@ -7,17 +7,9 @@ single integer N. Write a method that takes the array as an argument and returns
 
 
 def find_outlier(integers):
-    odd = []
-    even = []
-    for numb in integers:
-        if numb % 2 == 0:
-            odd.append(numb)
-        else:
-            even.append(numb)
-    if len(odd) == 1:
-        return odd[0]
-    else:
-        return even[0]
+    odds = [x for x in integers if x % 2 != 0]
+    evens = [x for x in integers if x % 2 == 0]
+    return odds[0] if len(odds) < len(evens) else evens[0]
 
 
 assert find_outlier([2, 4, 6, 8, 10, 3]) == 3
